@@ -64,7 +64,7 @@ do {
 } while (source.Length > 0);
 dictionaryComplete = true;
 ```
-If at any point an exception occurs—such as a missing code in the dictionary—the method catches it and sets flag to false, signaling that decompression failed.
+If at any point an exception occurs—such as a missing code in the dictionary - the method catches it and sets flag to false, signaling that decompression failed.
 
 
 ### Printing Results
