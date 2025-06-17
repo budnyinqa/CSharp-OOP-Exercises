@@ -338,7 +338,7 @@ private string GetValidInput()
 Here `Menu` relies on `UserInput.Read()` to acquire raw text and on `UserOutput.PromptRetry()` to inform the user, but it contains the control‑flow logic for validation. Maintaining I/O classes as simple wrappers allows you to introduce alternative interfaces by replacing these two classes alone.
 
 
-### Compression
+### Compressionn
 
 
 
