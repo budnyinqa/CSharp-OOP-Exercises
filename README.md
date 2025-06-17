@@ -4,8 +4,7 @@
 
 
 ## Huffman Coding - Exercise 1
-The purpose of the project is to:
-Correctly encode the data provided as a declared character string. Upon running the program, the following should be displayed on the screen:
+The purpose of the project is to correctly encode the data provided as a declared character string. Upon running the program, the following should be displayed on the screen:
 
 - the value of the string before compression,
 - a list in ascending order of the characters contained in the input string, along with their frequencies and the assigned codewords read from the Huffman tree, in the format: `"A, 17, 01101001";`
