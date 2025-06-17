@@ -308,7 +308,72 @@ if (dictionary.Length > dictionaryLength)
 
 
 
-## LZW Coding - 
+## LZW Coding - Exercise 3
+#PURPOSE
+
+### Main Method
+This LZW compressor is structured around distinct classes that reflect core object‑oriented principles. The `Program` class exclusively handles application startup and global error management:
+```C#
+static void Main(string[] args)
+{
+    try { new Menu().Start(); } // Launch the application  
+    catch (Exception ex) { Console.WriteLine("An error occurred: " + ex.ToString()); } // If an error occurs, notify with details  
+}
+```
+By delegating the actual work to `Menu`, the entry point remains minimal and focused on bootstrapping. This separation makes it straightforward to modify error‑handling behavior (for example, logging to a file) without touching business logic.
+
+
+
+### User Interaction and Validation
+Interaction with the console is funneled through two collaborators, ensuring that nothing outside these classes performs. In `Menu`, input is validated in a loop:
+```C#
+private string GetValidInput()
+{
+    string input = new UserInput().Read(); // Read the string  
+    while (IsInvalid(input)) // Check if it is empty  
+        input = RetryInput(); // Retry if the user provided an invalid string  
+    return input; // Return the valid string  
+}
+```
+Here `Menu` relies on `UserInput.Read()` to acquire raw text and on `UserOutput.PromptRetry()` to inform the user, but it contains the control‑flow logic for validation. Maintaining I/O classes as simple wrappers allows you to introduce alternative interfaces by replacing these two classes alone.
+
+
+### Compression
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
