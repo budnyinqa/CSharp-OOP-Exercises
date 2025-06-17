@@ -232,7 +232,7 @@ if (dictionary.Length > dictionaryLength)
 
 
 
-
+## LZW Coding - 
 
 
 
