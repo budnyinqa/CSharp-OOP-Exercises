@@ -10,7 +10,7 @@ The purpose of the project is to correctly encode the data provided as a declare
 - a list in ascending order of the characters contained in the input string, along with their frequencies and the assigned codewords read from the Huffman tree, in the format: `"A, 17, 01101001";`
 - the resulting encoded string, in which individual codewords are separated by the sequence `[ , ]` (comma followed by space).
 
-The end of the compression code sequence should be indicated by displaying the word `[ , EOF]` (comma followed by `EOF`).
+The end of the compression code sequence should be indicated by displaying the word `[ , EOF]` (comma followed by `EOF`). The program should provide the user with the ability to encode a user-defined character string.
 
 
 ### Main Method
@@ -87,10 +87,15 @@ foreach (var item in characterList)
 Finally, the program outputs the encoded bitstream in order, marking the end with EOF. This structured output helps users verify both the integrity and efficiency of the Huffman encoding process.
 
 
+## - Exercise 2
+The purpose of the project is to correctly encode the data provided as a character string designated as the source data stream. Upon running the program, the following should be displayed on the screen:
+
+- the value of the string before compression,
+- the resulting encoded string, in which individual codewords are separated by the sequence `[ , ]` (comma followed by space),
+- the end of the compression code sequence should be indicated by displaying the word `[ , EOF]` (comma followed by EOF).
 
 
-
-
+### 
 
 
 
