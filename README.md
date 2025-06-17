@@ -24,31 +24,73 @@ All operations are wrapped in a try-catch block to gracefully handle unexpected 
 ### Compression
 The `HuffmanCompress` method is responsible for analyzing the frequency of each character in the input string, constructing the Huffman tree, and generating the binary codes for each character. First, it scans the input:
 ```C#
-do {
-    nextChar = remaining.Substring(0, 1);
-    listIndex = tempOccurringCharacter.FindIndex(f => f.Character == nextChar);
-    if (listIndex == -1) {
-        tempOccurringCharacter.Add(new OccurringCharacter { Character = nextChar, Frequency = 1 });
-    } else {
-        tempOccurringCharacter.Where(w => w.Character == nextChar)
-                               .ToList()
-                               .ForEach(s => s.Frequency++);
+// Filling the list of character occurrences with OccurringCharacter objects
+// and counting their frequencies in the input string
+do
+{
+    temp = remaining;
+    nextChar = temp.Substring(0, 1);
+
+    // Now we use the well-known Lambda function construct
+    // to check whether the list contains the character taken from the input string
+    listIndex = tempOccurringCharacter.FindIndex(IB_71578_f => IB_71578_f.Character == nextChar);
+
+    // If the list does not contain it (i.e., the function returns -1),
+    // then we add it to the list
+    if (listIndex == -1)
+    {
+        OccurringCharacter newChar = new OccurringCharacter();
+        newChar.Frequency = 1;
+        newChar.Character = nextChar;
+        tempOccurringCharacter.Add(newChar);
     }
-    remaining = remaining.Remove(0, 1);
-} while (remaining.Length != 0);
+    // If it is already in the list, then again using a Lambda function,
+    // we find the appropriate index and increment
+    // the frequency count for that character by 1
+    else
+    {
+        tempOccurringCharacter.Where(w => w.Character == nextChar).ToList()
+                              .ForEach(s => s.Frequency = s.Frequency + 1);
+    }
+
+    // Finally, from the input string, we remove the character that was just added to the list
+    remaining = temp.Remove(0, 1);
+}
+// The above sequence repeats as long as the input string length is greater than 0
+while (remaining.Length != 0);
 ```
 This loop builds a list of `OccurringCharacter` objects, each tracking how often a character appears. After sorting by ascending frequency, the core Huffman tree is built in a do-while loop that repeatedly picks the two lowest-frequency nodes, merges them into a new parent node, and assigns 0 or 1 as the code bit:
 ```C#
-for (int i = 0; i <= 1; i++) {
-    var node = new HuffmanTreeNode {
-        Character = charListSorted[i].Character,
-        ParentNode = nodeNew + nodeNum,
-        CodeBit = i
-    };
-    huffmanTreeNode.Add(node);
+for (int i = 0; i <= 1; i++)
+{
+    HuffmanTreeNode huffmanTreeItem = new HuffmanTreeNode();
+    if (charListSorted.Count > 1)
+        huffmanTreeItem.CodeBit = i;
+    else
+        huffmanTreeItem.CodeBit = 2;
+    huffmanTreeItem.Character = charListSorted[i].Character;
+    huffmanTreeItem.ParentNode = nodeNew + nodeNum.ToString();
+    huffmanTreeItem.Frequency = charListSorted[i].Frequency;
+    huffmanTreeNode.Add(huffmanTreeItem);
 }
+
+// The only thing left is to remove the first two objects
+// from the sorted character list because they are now part of the tree
 charListSorted.RemoveRange(0, 2);
-charListSorted = charListSorted.OrderBy(o => o.Frequency).ToList();
+
+// And then re-sort the remaining objects, because at the end
+// we added a new root object with a frequency
+// that may not be the greatest value
+tempOccurringCharacter = charListSorted.OrderBy(IB_71578_o => IB_71578_o.Frequency).ToList();
+
+// We also sort the temporary Huffman tree node list in each loop iteration
+tempHuffmanTreeNode = huffmanTreeNode.OrderByDescending(IB_71578_o => IB_71578_o.Frequency).ToList();
+
+// And assign the result back to the Huffman tree node list to keep
+huffmanTreeNode = tempHuffmanTreeNode;
+
+// Also assign the list of objects containing characters
+charListSorted = tempOccurringCharacter;
 ```
 Once the tree is complete and all intermediate nodes are created, the method traverses from each leaf back to the root to build the final binary code string for each character. The result is a list of binary strings corresponding to the original input characters.
 
@@ -56,21 +98,55 @@ Once the tree is complete and all intermediate nodes are created, the method tra
 ### Decompression
 The counterpart, takes the compressed bitstream and the dictionary of character–code mappings to reconstruct the original text. It reads the bitstream character by character, skipping any delimiters (such as commas) that may appear, and accumulates bits until a matching entry is found in the dictionary:
 ```C#
-do {
-    // Skip non-binary characters
-    while (source.Length > 0 && source[0] != '0' && source[0] != '1') {
-        source = source.Remove(0, 1);
+// Just in case, we set up a trap to catch errors
+// which we won’t handle in this code,
+// but using it in production code could be a good idea
+try
+{
+    // Decompression, like compression, is performed in a loop
+    // that defines the exit condition, i.e. a do-while loop
+
+    do // "do-while" loop processing the entire input string
+    {
+        do // Loop skipping non-binary characters
+        {
+            if (source.Length > 0 &&
+                source.Substring(0, 1) != "0" &&
+                source.Substring(0, 1) != "1")
+            {
+                source = source.Remove(0, 1); // If the character is not 0 or 1, remove it
+            }
+        }
+        while (source.Length > 0 &&
+               source.Substring(0, 1) != "1" &&
+               source.Substring(0, 1) != "0"); // Repeat until 0 or 1 is found
+
+        if (source.Length > 0) // Then, if there are still characters in the compressed string
+        {
+            do // Build binary code, bit by bit
+            {
+                nextChar = nextChar + source.Substring(0, 1);
+                source = source.Remove(0, 1); // Add the bit to variable and remove from input
+            }
+            while (source.Substring(0, 1) == "0" ||
+                   source.Substring(0, 1) == "1"); // Repeat until all bits are processed
+
+            consists = sourceDictionary.FindIndex(f => f.Code == nextChar); // Find in dictionary
+            resultCode.Add(sourceDictionary[consists].Character); // If found, add the character
+            nextChar = ""; // Reset variable to process next characters
+        }
+        else
+        {
+            dictionaryComplete = true; // If no characters to process, finish and mark as complete
+            return;
+        }
     }
-    // Build the next code fragment
-    while (source.Length > 0 && (source[0] == '0' || source[0] == '1')) {
-        nextChar += source[0];
-        source = source.Remove(0, 1);
-    }
-    int index = sourceDictionary.FindIndex(f => f.Code == nextChar);
-    resultCode.Add(sourceDictionary[index].Character);
-    nextChar = "";
-} while (source.Length > 0);
-dictionaryComplete = true;
+    while (source.Length > 0); // Repeat until no more characters
+}
+catch (Exception e)
+{
+    dictionaryComplete = false; // Abort and mark as incomplete if error occurs
+}
 ```
 If at any point an exception occurs—such as a missing code in the dictionary - the method catches it and sets flag to false, signaling that decompression failed.
 
