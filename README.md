@@ -4,6 +4,15 @@
 
 
 ## Huffman Coding - Exercise 1
+The purpose of the project is to:
+Correctly encode the data provided as a declared character string. Upon running the program, the following should be displayed on the screen:
+
+- the value of the string before compression,
+- a list in ascending order of the characters contained in the input string, along with their frequencies and the assigned codewords read from the Huffman tree, in the format: `"A, 17, 01101001";`
+- the resulting encoded string, in which individual codewords are separated by the sequence `[ , ]` (comma followed by space).
+
+The end of the compression code sequence should be indicated by displaying the word `[ , EOF]` (comma followed by `EOF`).
+
 
 ### Main Method
 The entry point of the program, orchestrates the entire process of Huffman compression and decompression in a loop, allowing users to compress multiple strings without restarting the application. Within a while (true) loop, the program first performs compression by invoking HuffmanCompress method, passing the current input string, a list to collect encoded bits, and a list to hold character frequency information. 
