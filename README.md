@@ -309,7 +309,18 @@ if (dictionary.Length > dictionaryLength)
 
 
 ## LZW Coding - Exercise 3
-#PURPOSE
+The goal is to rewrite both the compression and decompression algorithms from scratch using object-oriented programming principles. The code should be structured into multiple well-defined classes, each following the Single Responsibility Principle (SRP). Every class must encapsulate a logically minimal and focused purpose, ensuring its existence is justified and its role is clear.
+
+The solution must include a console-based user interface module, allowing users to manually input any text for compression. Specifically, the program must be able to handle the following sample input: 
+
+`DBCDDCBBBCDBADBADACBCABACBACDCBCACDACADDBAAADBDCBDDDABACBCCAAACBCDBCBDADDBBBBCCBDDDBBAADDCDCCDADBDCDCCACADCDCAADDCDBAAABBACCDBDABBDCDBCCBCADDDDACCCCCBCBADDCDDCDBBCDCCBDCDBDABDBBDAABBAACACABDACAAADACAABDBCAABADCCADDBCACACBAACA`
+
+The user interface must also be robust against intentional misuse or error generation, such as unexpected inputs or attempts to crash the program. All exceptions must be gracefully handled. Implementation of the LZW algorithm should be fully original and designed to enforce the following constraints:
+- each method must be no longer than 4 lines of code, promoting clarity and maintainability,
+- the program must consist of at least five core classes that collaborate by passing strongly encapsulated objects,
+- every class must expose only the strictly necessary interface (full data encapsulation) to ensure maximum modularity and minimum coupling,
+- the solution should demonstrate a clear understanding of object-oriented design patterns such as encapsulation, composition, responsibility separation, and controlled communication between components.
+
 
 ### Main Method
 This LZW compressor is structured around distinct classes that reflect core object‑oriented principles. The `Program` class exclusively handles application startup and global error management:
@@ -338,19 +349,61 @@ private string GetValidInput()
 Here `Menu` relies on `UserInput.Read()` to acquire raw text and on `UserOutput.PromptRetry()` to inform the user, but it contains the control‑flow logic for validation. Maintaining I/O classes as simple wrappers allows you to introduce alternative interfaces by replacing these two classes alone.
 
 
-### Compressionn
-Hure
+### Compression
+The most important class in the program is `CompressorLZW`, which uses composition to assemble a `DictionaryBuilde`r and an `Encoder`. The builder first registers every unique character, assigning incremental codes:
+```C#
+public void Build(string s)
+{
+    int nextCode = 1;
+    foreach (char character in s) // Iterate over each character
+        if (!directDict.ContainsKey(character.ToString())) // If string not present in dictionary, add character to both dictionaries
+        { directDict[character.ToString()] = nextCode; reverseDict[nextCode++] = character.ToString(); }
+}
+```
+The Encoder then implements the LZW loop, keeps track of the longest known pattern:
+```C#
+public void Encode(string s, DictionaryBuilder db)
+{
+    string currentPattern = ""; // Current pattern
+    int nextCode = db.Count() + 1; // New code is count of elements in dictionary plus one
+    foreach (char character in s) ProcessCharacter(character, ref currentPattern, ref nextCode, db); // Process each character in string
+    if (currentPattern != "") codes.Add(db.GetCode(currentPattern)); // Add code of last pattern if not empty
+}
+```
+Within `ProcessCharacter`, the decision to extend a pattern or emit a code and add a new dictionary entry exemplifies encapsulation of algorithmic state. Neither `Program` nor `Menu` need to know how codes are generated—only that they will receive a list of integers representing the compressed data.
+
+
+### Decompression
+Decompression mirrors compression but in reverse. Decompressor starts by reading the first code to seed both the output and the dictionary pointer:
+```C#
+public string Decompress(CompressionResult res)
+{
+    // Retrieve dictionary and list of code words. Then read first symbol and set pointer to new code.
+    var d = res.Dictionary; var k = res.Codes; string w = d[k[0]]; int i = d.Count + 1;
+    return ProcessCodes(d, k, w, i); // Continue processing
+}
+private string ProcessCodes(Dictionary<int, string> d, List<int> k, string w, int i)
+{
+    string result = w; // Initialize result
+    for (int j = 1; j < k.Count; j++) result += Expand(d, ref i, ref w, k[j]); // Rebuild subsequent patterns
+    return result;
+}
+```
+As each subsequent code arrives, `Expand` handles two scenarios: a known code or the special case where the code refers to a sequence not yet in the dictionary. The method then updates the dictionary and returns the decoded string fragment:
+```C#
+private string Expand(Dictionary<int, string> dict, ref int nextCode, ref string current, int code)
+{
+    string entry = dict.ContainsKey(code) ? dict[code] : current + current[0]; // If code doesn't exist, create pattern from current plus first character
+    dict[nextCode++] = current + entry[0]; // Add new pattern to dictionary
+    current = entry; // Update current pattern
+    return entry;    // Return expanded string
+}
+```
+By returning a single object instead of disparate values, the design guarantees that consumers cannot accidentally mix up which list belongs to which dictionary, reinforcing type safety and clarity.
 
 
 
-
-
-
-
-
-
-
-
+## 
 
 
 
