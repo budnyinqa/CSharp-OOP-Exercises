@@ -407,7 +407,7 @@ By returning a single object instead of disparate values, the design guarantees 
 The purpose of the exercise is to create a `Windows Forms` application with 3 labels, added using the `Designer`, that can be moved with the mouse. The code must follow the Single Responsibility Principle (SRP) – separate label movement logic from UI layout and other concerns.
 
 
-### Labels Inicialisation
+### Labels Inicialization
 During the form's construction, all `Label` controls added by the `Windows Forms Designer` are automatically assigned two mouse event handlers: `MouseDown` and `MouseMove`. This ensures that each label can respond to mouse actions individually without hardcoding their names.
 ```C#
 public form1()
@@ -429,11 +429,40 @@ This loop detects every Label on the form and attaches event handlers that will 
 
 
 ### Mouse Interaction Logic
+Two methods control how labels react to mouse input:
+- `ObjectMove`: Calculates and updates the label's position as the mouse moves,
+- `MouseAction`: Captures the initial click location (on left click) and brings the label to the front (on right click).
+```C#
+// Method that changes the position of the object
+private void ObjectMove(object sender, MouseEventArgs e)
+{
+    if (e.Button == MouseButtons.Left)
+    {
+        Label box = sender as Label;
+        // When the user holds the left mouse button and moves the cursor,
+        // the object also moves based on the control’s position saved in its tag
+        box.Left += e.X - ((Point)box.Tag).X;
+        box.Top += e.Y - ((Point)box.Tag).Y;
+    }
+}
+// Method handles the mouse down event, reacting to mouse clicks
+private void MouseAction(object sender, MouseEventArgs e)
+{
+    if (e.Button == MouseButtons.Left)
+    {
+        Label box = sender as Label;
+        box.Tag = e.Location; // When the user clicks the left mouse button, the cursor position is saved
+    }
+    if (e.Button == MouseButtons.Right)
+    {
+        Label box = sender as Label;
+        box.BringToFront();
+    }
+}
+```
+`Tag` is used to store the original mouse position relative to the label. On `MouseMove`, the difference between the current and original position determines how far the label should be moved.
 
-
-
-
-
+This minimal and modular approach aligns with the Single Responsibility Principle, keeping logic and UI concerns separate and manageable.
 
 
 
