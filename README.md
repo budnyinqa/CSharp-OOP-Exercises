@@ -403,14 +403,32 @@ By returning a single object instead of disparate values, the design guarantees 
 
 
 
-## Creating Draggable Objects
+## Draggable Objects
+The purpose of the exercise is to create a `Windows Forms` application with 3 labels, added using the `Designer`, that can be moved with the mouse. The code must follow the Single Responsibility Principle (SRP) – separate label movement logic from UI layout and other concerns.
 
 
+### Labels Inicialisation
+During the form's construction, all `Label` controls added by the `Windows Forms Designer` are automatically assigned two mouse event handlers: `MouseDown` and `MouseMove`. This ensures that each label can respond to mouse actions individually without hardcoding their names.
+```C#
+public form1()
+{
+    InitializeComponent();
+    foreach (Control control in Controls)
+    {
+        if (control is Label)
+        {
+            // Initialize methods responsible for handling object movement 
+            // or their overlapping
+            control.MouseMove += new MouseEventHandler(ObjectMove);
+            control.MouseDown += new MouseEventHandler(MouseAction);
+        }
+    }
+}
+```
+This loop detects every Label on the form and attaches event handlers that will manage its movement behavior.
 
 
-
-
-
+### Mouse Interaction Logic
 
 
 
