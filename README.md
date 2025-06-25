@@ -403,7 +403,7 @@ By returning a single object instead of disparate values, the design guarantees 
 
 
 
-## Draggable Objects
+## Draggable Objects - Exercise 4
 The purpose of the exercise is to create a `Windows Forms` application with 3 labels, added using the `Designer`, that can be moved with the mouse. The code must follow the Single Responsibility Principle (SRP) – separate label movement logic from UI layout and other concerns.
 
 
@@ -466,7 +466,7 @@ This minimal and modular approach aligns with the Single Responsibility Principl
 
 
 
-## Object Manipulation in a Dynamic UI
+## Object Manipulation in a Dynamic UI - Exercise 5
 Purpose of the project is to create a `Windows Forms` application that dynamically generates all of its UI elements at runtime—without using the `Designer` and provides both mouse‐driven and game-style keyboard controls for manipulating a single black object on the form.
 
 The interface will consist of ten buttons `UP, U-P, >>>, D-P, DOWN, D-L, <<<, U-L, INCREASE, DECREASE` arranged next to the black label. Clicking any button or pressing its corresponding keyboard shortcut moves or resizes the shape accordingly. A Label on the form displays, in real time, the list of all currently held down keys `Active keys`, updating instantly as keys are pressed and released.
