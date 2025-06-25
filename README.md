@@ -466,7 +466,7 @@ This minimal and modular approach aligns with the Single Responsibility Principl
 
 
 
-## Object Manipulation in a Dynamic UI - Exercise 5
+## Event-Driven Object Manipulation - Exercise 5
 Purpose of the project is to create a `Windows Forms` application that dynamically generates all of its UI elements at runtime—without using the `Designer` and provides both mouse‐driven and game-style keyboard controls for manipulating a single black object on the form.
 
 The interface will consist of ten buttons `UP, U-P, >>>, D-P, DOWN, D-L, <<<, U-L, INCREASE, DECREASE` arranged next to the black label. Clicking any button or pressing its corresponding keyboard shortcut moves or resizes the shape accordingly. A Label on the form displays, in real time, the list of all currently held down keys `Active keys`, updating instantly as keys are pressed and released.
