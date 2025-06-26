@@ -596,11 +596,16 @@ Thanks to constructor injection, interface abstractions, and single‑responsibi
 
 
 
+## Configurable Compression Display Tool
+The purpose of the project is to build a program that, in the future, could be used for encoding by compression algorithms. The application consists of three panels: 
+- the `Work Panel`, which, upon clicking the `AUTO` button, will display 102 labels and read-only textboxes that will represent the output of the compression algorithm,
+- the `Parameters`, which will add a pair of labels and textboxes that (in the future) will allow the user to customize the entire `Work Panel`,
+- the `Arrangement`,  which consists of four buttons: one to display objects in the `Work Panel` in a default way, one to clear the `Work Panel`, one to open the `Parameters` panel, and one to exit the application.
+
+All controls that require event handling—such as `CheckBoxes`, `Buttons`, and fields that open a color selection dialog must have appropriately declared and implemented event handler methods. `TextBoxes` must include input validation to ensure that only numeric values are allowed, letters and other invalid characters are not permitted. The entire interface should be built dynamically, with objects passed appropriately, and the architecture must adhere to the `Single Responsibility Principle (SRP)`. Additionally, every user action must be reflected with a message displayed on a `Label` to inform the user of the current operation.
 
 
-
-
-
+### 
 
 
 
