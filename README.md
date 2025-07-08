@@ -676,13 +676,89 @@ Inline lambda expressions delegate clicks back to `form1` methods such as `AutoA
 
 
 ### Builder Pattern
+For the more complex `Parameters` panel, we apply a builder-style approach. The `ParametersPanelBuilder` class is responsible for all aspects of the `Parameters` UI: checkboxes, textboxes, color-pickers, and the GENERATE button.
+```C#
+class ParametersPanelBuilder
+{
+    private readonly Panel workPanel; // References
+    private readonly Controlls crl;
+    private readonly form1 form;
+
+    // Build the constructor
+    public ParametersPanelBuilder(Panel workPanel, Controlls crl, form1 form)
+    {
+        this.workPanel = workPanel;
+        this.crl = crl;
+        this.form = form;
+    }
+
+    public void Build()
+    {
+        // Search for the GroupBox named "GbParameters" inside workPanel — assume it already exists
+        var gbParameters = (GroupBox)workPanel.Controls.Find("GbParameters", true)[0];
+        // Set general parameters for the created controls
+        Font font = new Font("Microsoft Sans Serif", 10, FontStyle.Bold);
+        Color foreColor = Color.DarkBlue;
+        Color backColor = Color.Transparent;
+
+        // CheckBoxes
+        var labelCB = crl.Create_CheckBox("labelCB", new Point(15, 20), 90, font, foreColor, false, "Label");
+        var textBoxCB = crl.Create_CheckBox("textBoxCB", new Point(15, 45), 90, font, foreColor, false, "TextBox");
+        labelCB.CheckedChanged += form.cb2_CheckedChanged;
+        textBoxCB.CheckedChanged += form.cb2_CheckedChanged;
+
+        // Similarly for the rest of the controlls...
+
+        // Attach KeyPress event to all TextBoxes whose names start with "TbParam"
+        foreach (Control ctrl in gbParameters.Controls)
+            if (ctrl is TextBox tb && tb.Name.StartsWith("TbParam"))
+                tb.KeyPress += form.OnlyNumeric_KeyPress;
+    }
+}
+```
+Thanks to this class the way that objects are created is reusable.
 
 
+### Event-Driven Notifications
+To provide feedback, `MessageService` centralizes the display of transient status messages on a dedicated `Label` with a `Timer`. This separates notification logic from UI-construction or business logic.
+```C#
+class MessageService
+{
+    private static Label messageLabel; // Label that displays the message
+    private static Timer messageTimer; // Timer to count down 3 seconds
 
+    public static void Initialize(Form IB_71578_form)
+    {
+        messageLabel = new Label()
+        {
+            Size = new Size(250, 30),
+            ForeColor = Color.Black,
+            Location = new Point(15, 10),
+            Visible = false,
+            Font = new Font("Microsoft Sans Serif", 10, FontStyle.Bold)
+        };
+        IB_71578_form.Controls.Add(messageLabel); // Add the label to the form
 
+        messageTimer = new Timer();
+        messageTimer.Interval = 3000; // 3 seconds
+        messageTimer.Tick += (s, e) =>
+        {
+            messageLabel.Visible = false; // Hide the message
+            messageTimer.Stop(); // Stop the timer
+        };
+    }
 
+    public static void ShowTemporaryMessage(string msg)
+    {
+        messageLabel.Text = msg; // Set the text
+        messageLabel.Visible = true; // Show the message
+        messageTimer.Start(); // Start the timer
+    }
+}
+```
+By using static methods and fields, any class can invoke `MessageService.ShowTemporaryMessage("…")` without needing an instance. The `Timer.Tick` event hides the message automatically after three seconds, freeing callers from cleanup responsibilities.
 
-
+Through these four components the application follows SOLID and object-oriented design principles, ensuring clarity, maintainability, and separation of concerns.
 
 
 
