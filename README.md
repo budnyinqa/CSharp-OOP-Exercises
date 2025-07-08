@@ -596,7 +596,7 @@ Thanks to constructor injection, interface abstractions, and single‑responsibi
 
 
 
-## Configurable Compression Display Tool
+## Configurable Compression Display Tool - Exercise 6
 The purpose of the project is to build a program that, in the future, could be used for encoding by compression algorithms. The application consists of three panels: 
 - the `Work Panel`, which, upon clicking the `AUTO` button, will display 102 labels and read-only textboxes that will represent the output of the compression algorithm,
 - the `Parameters`, which will add a pair of labels and textboxes that (in the future) will allow the user to customize the entire `Work Panel`,
