@@ -1,0 +1,7 @@
+C:\Users\HARDPC\Desktop\Github\OOP\LZW Coding\LZW Coding\bin\Debug\LZW Coding.exe.config
+C:\Users\HARDPC\Desktop\Github\OOP\LZW Coding\LZW Coding\bin\Debug\LZW Coding.exe
+C:\Users\HARDPC\Desktop\Github\OOP\LZW Coding\LZW Coding\bin\Debug\LZW Coding.pdb
+C:\Users\HARDPC\Desktop\Github\OOP\LZW Coding\LZW Coding\obj\Debug\LZW Coding.csproj.AssemblyReference.cache
+C:\Users\HARDPC\Desktop\Github\OOP\LZW Coding\LZW Coding\obj\Debug\LZW Coding.csproj.CoreCompileInputs.cache
+C:\Users\HARDPC\Desktop\Github\OOP\LZW Coding\LZW Coding\obj\Debug\LZW Coding.exe
+C:\Users\HARDPC\Desktop\Github\OOP\LZW Coding\LZW Coding\obj\Debug\LZW Coding.pdb
