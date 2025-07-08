@@ -605,15 +605,77 @@ The purpose of the project is to build a program that, in the future, could be u
 All controls that require event handling—such as `CheckBoxes`, `Buttons`, and fields that open a color selection dialog must have appropriately declared and implemented event handler methods. `TextBoxes` must include input validation to ensure that only numeric values are allowed, letters and other invalid characters are not permitted. The entire interface should be built dynamically, with objects passed appropriately, and the architecture must adhere to the `Single Responsibility Principle (SRP)`. Additionally, every user action must be reflected with a message displayed on a `Label` to inform the user of the current operation.
 
 
-### 
+### Overview and Project Structure
+The code follows object-oriented principles to separate concerns and make each component responsible for a single part of the UI or behavior. The entry point is the form1 class, which initializes the main window, sets up shared services, and delegates the creation and management of all UI elements to helper classes.
+```C#
+public partial class form1 : Form
+{
+    public static Panel workPanel; // Static panel that is the main container for objects
+    private Controlls crl; // Object of the class that defines the controls
+    private ControlsManager controlsManager; // Object that manages the controls
+    public form1()
+    {
+        InitializeComponent();
+        MessageService.Initialize(this); // Initialize message handling and operation of individual classes
+        InitializeWorkPanel();
+
+        crl = new Controlls(); 
+        controlsManager = new ControlsManager(workPanel, crl, this);
+
+        this.Size = new Size(1030, 620);
+    }
+```
+`workPanel` is declared static so that it can be referenced by any manager or builder without repeatedly passing the same instance. `ControlsManager` orchestrates the construction of the three main panels and wires up their event handlers.
 
 
+### ControlsManager
+`ControlsManager` encapsulates all logic related to creating and laying out the three `GroupBox` panels inside `workPanel`. By isolating panel construction in its own class, `form1` remains focused on overall application setup, while `ControlsManager` only manages controls.
+```C#
+class ControlsManager
+{
+    private Panel workPanel;
+    private Controlls crl;
+    private Form parentForm;
+
+    public ControlsManager(Panel panel, Controlls controls, Form form)
+    {
+        workPanel = panel;
+        crl = controls;
+        parentForm = form;
+    }
+
+    public void LoadControls()
+    {
+        // We create 3 GroupBox-es
+        GroupBox Gb001 = crl.Create_GoupBox(15, 10, 825, 450, "Work Panel", "GbWorkPanel");
+        workPanel.Controls.Add(Gb001);
+
+        GroupBox Gb002 = crl.Create_GoupBox(850, 10, 120, 450, "Arrangement", "GbArrangement");
+        workPanel.Controls.Add(Gb002);
+
+        GroupBox Gb003 = crl.Create_GoupBox(15, 465, 955, 80, "Parameters", "GbParameters");
+        workPanel.Controls.Add(Gb003);
+
+        Font font = new Font("Microsoft Sans Serif", 8, FontStyle.Bold);
+        Color foreColor = Color.DarkBlue;
+        Color backColor = Gb002.BackColor;
+
+        // Button AUTO
+        Button btAutoGenerate = crl.Create_Button("BtAutoGenerate", 12, 25, 95, 50,
+            font, foreColor, backColor, "AUTO");
+        btAutoGenerate.Click += (s, e) => ((form1)parentForm).AutoArrangeControls();
+        btAutoGenerate.MouseHover += (s, e) => ButtonHover(btAutoGenerate);
+        btAutoGenerate.MouseLeave += (s, e) => ButtonLeave(btAutoGenerate);
+        Gb002.Controls.Add(btAutoGenerate);
+
+        // Similarly for the rest of the buttons
+```
+The constructor receives `workPanel`, the `Controlls` factory, and a reference to `parentForm` for callback methods which is a use of dependency injection rule.
+
+Inline lambda expressions delegate clicks back to `form1` methods such as `AutoArrangeControls`, preserving encapsulation.
 
 
-
-
-
-
+### Builder Pattern
 
 
 
