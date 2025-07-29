@@ -1,0 +1,7 @@
+C:\Users\HARDPC\source\repos\LZ77 Compression\LZ77 Compression\bin\Debug\LZ77 Compression.exe.config
+C:\Users\HARDPC\source\repos\LZ77 Compression\LZ77 Compression\bin\Debug\LZ77 Compression.exe
+C:\Users\HARDPC\source\repos\LZ77 Compression\LZ77 Compression\bin\Debug\LZ77 Compression.pdb
+C:\Users\HARDPC\source\repos\LZ77 Compression\LZ77 Compression\obj\Debug\LZ77 Compression.csproj.AssemblyReference.cache
+C:\Users\HARDPC\source\repos\LZ77 Compression\LZ77 Compression\obj\Debug\LZ77 Compression.csproj.CoreCompileInputs.cache
+C:\Users\HARDPC\source\repos\LZ77 Compression\LZ77 Compression\obj\Debug\LZ77 Compression.exe
+C:\Users\HARDPC\source\repos\LZ77 Compression\LZ77 Compression\obj\Debug\LZ77 Compression.pdb
