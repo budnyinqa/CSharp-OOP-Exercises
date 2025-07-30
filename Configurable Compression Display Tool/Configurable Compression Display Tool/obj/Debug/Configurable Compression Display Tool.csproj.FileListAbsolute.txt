@@ -1,0 +1,10 @@
+C:\Users\HARDPC\source\repos\Configurable Compression Display Tool\Configurable Compression Display Tool\bin\Debug\Configurable Compression Display Tool.exe.config
+C:\Users\HARDPC\source\repos\Configurable Compression Display Tool\Configurable Compression Display Tool\bin\Debug\Configurable Compression Display Tool.exe
+C:\Users\HARDPC\source\repos\Configurable Compression Display Tool\Configurable Compression Display Tool\bin\Debug\Configurable Compression Display Tool.pdb
+C:\Users\HARDPC\source\repos\Configurable Compression Display Tool\Configurable Compression Display Tool\obj\Debug\Configurable Compression Display Tool.csproj.AssemblyReference.cache
+C:\Users\HARDPC\source\repos\Configurable Compression Display Tool\Configurable Compression Display Tool\obj\Debug\Configurable_Compression_Display_Tool.Properties.Resources.resources
+C:\Users\HARDPC\source\repos\Configurable Compression Display Tool\Configurable Compression Display Tool\obj\Debug\Configurable Compression Display Tool.csproj.GenerateResource.cache
+C:\Users\HARDPC\source\repos\Configurable Compression Display Tool\Configurable Compression Display Tool\obj\Debug\Configurable Compression Display Tool.csproj.CoreCompileInputs.cache
+C:\Users\HARDPC\source\repos\Configurable Compression Display Tool\Configurable Compression Display Tool\obj\Debug\Configurable Compression Display Tool.exe
+C:\Users\HARDPC\source\repos\Configurable Compression Display Tool\Configurable Compression Display Tool\obj\Debug\Configurable Compression Display Tool.pdb
+C:\Users\HARDPC\source\repos\Configurable Compression Display Tool\Configurable Compression Display Tool\obj\Debug\Configurable_Compression_Display_Tool.Form1.resources
