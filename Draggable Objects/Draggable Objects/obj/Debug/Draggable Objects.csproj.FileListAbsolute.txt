@@ -1,0 +1,10 @@
+C:\Users\HARDPC\source\repos\Draggable Objects\Draggable Objects\bin\Debug\Draggable Objects.exe.config
+C:\Users\HARDPC\source\repos\Draggable Objects\Draggable Objects\bin\Debug\Draggable Objects.exe
+C:\Users\HARDPC\source\repos\Draggable Objects\Draggable Objects\bin\Debug\Draggable Objects.pdb
+C:\Users\HARDPC\source\repos\Draggable Objects\Draggable Objects\obj\Debug\Draggable Objects.csproj.AssemblyReference.cache
+C:\Users\HARDPC\source\repos\Draggable Objects\Draggable Objects\obj\Debug\Draggable_Objects.Form1.resources
+C:\Users\HARDPC\source\repos\Draggable Objects\Draggable Objects\obj\Debug\Draggable_Objects.Properties.Resources.resources
+C:\Users\HARDPC\source\repos\Draggable Objects\Draggable Objects\obj\Debug\Draggable Objects.csproj.GenerateResource.cache
+C:\Users\HARDPC\source\repos\Draggable Objects\Draggable Objects\obj\Debug\Draggable Objects.csproj.CoreCompileInputs.cache
+C:\Users\HARDPC\source\repos\Draggable Objects\Draggable Objects\obj\Debug\Draggable Objects.exe
+C:\Users\HARDPC\source\repos\Draggable Objects\Draggable Objects\obj\Debug\Draggable Objects.pdb
