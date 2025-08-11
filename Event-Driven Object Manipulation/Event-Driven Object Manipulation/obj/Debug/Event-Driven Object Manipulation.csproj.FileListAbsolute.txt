@@ -1,0 +1,18 @@
+C:\Users\HARDPC\source\repos\Event-Driven Object Manipulation\Event-Driven Object Manipulation\bin\Debug\Event-Driven Object Manipulation.exe.config
+C:\Users\HARDPC\source\repos\Event-Driven Object Manipulation\Event-Driven Object Manipulation\bin\Debug\Event-Driven Object Manipulation.exe
+C:\Users\HARDPC\source\repos\Event-Driven Object Manipulation\Event-Driven Object Manipulation\bin\Debug\Event-Driven Object Manipulation.pdb
+C:\Users\HARDPC\source\repos\Event-Driven Object Manipulation\Event-Driven Object Manipulation\obj\Debug\Event-Driven Object Manipulation.csproj.AssemblyReference.cache
+C:\Users\HARDPC\source\repos\Event-Driven Object Manipulation\Event-Driven Object Manipulation\obj\Debug\Event_Driven_Object_Manipulation.Properties.Resources.resources
+C:\Users\HARDPC\source\repos\Event-Driven Object Manipulation\Event-Driven Object Manipulation\obj\Debug\Event-Driven Object Manipulation.csproj.GenerateResource.cache
+C:\Users\HARDPC\source\repos\Event-Driven Object Manipulation\Event-Driven Object Manipulation\obj\Debug\Event-Driven Object Manipulation.csproj.CoreCompileInputs.cache
+C:\Users\HARDPC\source\repos\Event-Driven Object Manipulation\Event-Driven Object Manipulation\obj\Debug\Event-Driven Object Manipulation.exe
+C:\Users\HARDPC\source\repos\Event-Driven Object Manipulation\Event-Driven Object Manipulation\obj\Debug\Event-Driven Object Manipulation.pdb
+C:\Users\HARDPC\Desktop\Github\OOP\Event-Driven Object Manipulation\Event-Driven Object Manipulation\bin\Debug\Event-Driven Object Manipulation.exe.config
+C:\Users\HARDPC\Desktop\Github\OOP\Event-Driven Object Manipulation\Event-Driven Object Manipulation\bin\Debug\Event-Driven Object Manipulation.exe
+C:\Users\HARDPC\Desktop\Github\OOP\Event-Driven Object Manipulation\Event-Driven Object Manipulation\bin\Debug\Event-Driven Object Manipulation.pdb
+C:\Users\HARDPC\Desktop\Github\OOP\Event-Driven Object Manipulation\Event-Driven Object Manipulation\obj\Debug\Event-Driven Object Manipulation.csproj.AssemblyReference.cache
+C:\Users\HARDPC\Desktop\Github\OOP\Event-Driven Object Manipulation\Event-Driven Object Manipulation\obj\Debug\Event_Driven_Object_Manipulation.Properties.Resources.resources
+C:\Users\HARDPC\Desktop\Github\OOP\Event-Driven Object Manipulation\Event-Driven Object Manipulation\obj\Debug\Event-Driven Object Manipulation.csproj.GenerateResource.cache
+C:\Users\HARDPC\Desktop\Github\OOP\Event-Driven Object Manipulation\Event-Driven Object Manipulation\obj\Debug\Event-Driven Object Manipulation.csproj.CoreCompileInputs.cache
+C:\Users\HARDPC\Desktop\Github\OOP\Event-Driven Object Manipulation\Event-Driven Object Manipulation\obj\Debug\Event-Driven Object Manipulation.exe
+C:\Users\HARDPC\Desktop\Github\OOP\Event-Driven Object Manipulation\Event-Driven Object Manipulation\obj\Debug\Event-Driven Object Manipulation.pdb
