@@ -163,6 +163,10 @@ foreach (var item in characterList)
 Finally, the program outputs the encoded bitstream in order, marking the end with EOF. This structured output helps users verify both the integrity and efficiency of the Huffman encoding process.
 
 
+### Output
+![Image](https://github.com/user-attachments/assets/0d812142-90d9-4ce4-99bd-b02656e6bf9f)
+
+
 
 ## LZ77 Compression - Exercise 2
 The purpose of the project is to correctly encode the data provided as a character string designated as the source data stream. Upon running the program, the following should be displayed on the screen:
