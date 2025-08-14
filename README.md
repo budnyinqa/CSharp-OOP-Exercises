@@ -312,6 +312,10 @@ if (dictionary.Length > dictionaryLength)
 ```
 
 
+### Output
+![Image](https://github.com/user-attachments/assets/b28d9f95-d0c8-4d8f-9ccb-0db487e4ad3c)
+
+
 
 ## LZW Coding - Exercise 3
 The goal is to rewrite both the compression and decompression algorithms from scratch using object-oriented programming principles. The code should be structured into multiple well-defined classes, each following the Single Responsibility Principle (SRP). Every class must encapsulate a logically minimal and focused purpose, ensuring its existence is justified and its role is clear.
