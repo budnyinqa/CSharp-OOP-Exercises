@@ -411,6 +411,10 @@ private string Expand(Dictionary<int, string> dict, ref int nextCode, ref string
 By returning a single object instead of disparate values, the design guarantees that consumers cannot accidentally mix up which list belongs to which dictionary, reinforcing type safety and clarity.
 
 
+### Output
+![Image](https://github.com/user-attachments/assets/29fd05d6-b702-47ff-a340-436af8502533)
+
+
 
 ## Draggable Objects - Exercise 4
 The purpose of the exercise is to create a `Windows Forms` application with 3 labels, added using the `Designer`, that can be moved with the mouse. The code must follow the Single Responsibility Principle (SRP) – separate label movement logic from UI layout and other concerns.
