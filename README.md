@@ -478,6 +478,10 @@ private void MouseAction(object sender, MouseEventArgs e)
 This minimal and modular approach aligns with the Single Responsibility Principle, keeping logic and UI concerns separate and manageable.
 
 
+### Output
+![Image](https://github.com/user-attachments/assets/6e9fcd3b-731d-4d9e-b5b4-4c6b168ceda6)
+
+
 
 ## Event-Driven Object Manipulation - Exercise 5
 Purpose of the project is to create a `Windows Forms` application that dynamically generates all of its UI elements at runtime—without using the `Designer` and provides both mouse‐driven and game-style keyboard controls for manipulating a single black object on the form.
