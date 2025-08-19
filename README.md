@@ -1,5 +1,7 @@
 # CSharp-OOP-Exercises
+This repository contains six comprehensive exercises, each focused on a different core aspect of object-oriented programming such as the Single Responsibility Principle (SRP), aggregation, encapsulation, abstraction, inheritance and polymorphism. The exercises are designed so that once a principle is introduced in an earlier task it must be respected and applied in all subsequent tasks, creating a consistent and logical learning path that relies on repetition and reinforcement to firmly embed the concepts. 
 
+The hands-on format encourages writing clean, maintainable code and thoughtful design of class responsibilities and dependencies in realistic contexts, so that upon completing the full set learners will be able to design extensible class hierarchies, encapsulate behavior properly and use abstraction and polymorphism effectively. The materials are language-agnostic and can be adapted to different programming languages, making them suitable for self-study, classroom use or code review practice.
 
 
 
@@ -96,7 +98,7 @@ Once the tree is complete and all intermediate nodes are created, the method tra
 
 
 ### Decompression
-The counterpart, takes the compressed bitstream and the dictionary of character–code mappings to reconstruct the original text. It reads the bitstream character by character, skipping any delimiters (such as commas) that may appear, and accumulates bits until a matching entry is found in the dictionary:
+The counterpart, takes the compressed bitstream and the dictionary of character-code mappings to reconstruct the original text. It reads the bitstream character by character, skipping any delimiters (such as commas) that may appear, and accumulates bits until a matching entry is found in the dictionary:
 ```C#
 // Just in case, we set up a trap to catch errors
 // which we won’t handle in this code,
@@ -148,7 +150,7 @@ catch (Exception e)
     dictionaryComplete = false; // Abort and mark as incomplete if error occurs
 }
 ```
-If at any point an exception occurs—such as a missing code in the dictionary - the method catches it and sets flag to false, signaling that decompression failed.
+If at any point an exception occurs, such as a missing code in the dictionary. The method catches it and sets flag to false, signaling that decompression failed.
 
 
 ### Printing Results
