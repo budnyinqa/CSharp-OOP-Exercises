@@ -614,6 +614,10 @@ private void UpdateActiveKeysLabel() // Refresh the view of active keys and disp
 Thanks to constructor injection, interface abstractions, and single‑responsibility classes, new features—such as snapping to grid, undo/redo, or support for additional control types—can be added without modifying existing code significantly. New button types simply require additional ButtonConfig entries, and behaviors can be encapsulated in new methods on `LabelController` or separate strategy classes.
 
 
+### Output
+![Image](https://github.com/user-attachments/assets/2c07541f-0b69-476b-9ce1-538e9f092256)
+
+
 
 ## Configurable Compression Display Tool - Exercise 6
 The purpose of the project is to build a program that, in the future, could be used for encoding by compression algorithms. The application consists of three panels: 
