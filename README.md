@@ -485,7 +485,42 @@ This minimal and modular approach aligns with the Single Responsibility Principl
 
 
 
-## Event-Driven Object Manipulation - Exercise 5
+## Memory Leak - Exercise 5
+The goal of this exercise is to analyze the program created in the previous task and answer the following question: is the observed increase in memory usage during execution a normal and correct behavior, or is it a memory leak caused by improper handling of object destruction?
+
+
+### Test A
+The application was tested using the diagnostic tool built into Visual Studio. Below image presents the results of the analysis.
+
+We can observe memory usage remaining at a relatively stable level, with slight increases that appear to normalize, as can be seen around the 60th second of the test. This result can be considered satisfactory however, I decided to perform additional measurements in order to obtain more information.
+
+
+### Test B
+The next test provides us with more insights. In addition to memory usage, we can also observe the number of created objects as well as CPU usage.
+
+In the image above, we can observe a slight increase in the number of `live objects`, which does not recur in subsequent snapshots. This suggests that the program does not suffer from continuous allocation without proper deallocation. The program maintains a stable number of objects and a consistent heap size. Minor fluctuations, such as +5 objects or +0.15KB, appear to be normal behavior and do not directly indicate a memory issue.
+
+
+### Test C
+The final test was conducted with the use of `.NET Object Allocation Tracking` in order to monitor object creation and allocation patterns.
+
+The interpretation of the charts should begin with the most critical metric `Live Objects`. A systematic increase in the number of objects can be observed, which occurs after each object movement. The observable decreases coincide with object release events. This pattern indicates continuous allocation activity, but without evidence of a permanent memory leak.
+
+The `Object Delta` metric illustrates changes in the object count over time. The presence of negative bars shows that objects are being collected by the `Garbage Collector` as expected, preventing memory leaks.
+
+The allocation tree analysis reveals that the majority of allocations occur in `System.Windows.Forms.Control`, which is directly related to object movements and form rendering.
+
+
+### Interpretation
+The first two tests do not indicate a memory leak. The increase in memory usage is moderate - memory consumption rises but eventually stabilizes. The third test however, provided the most substantial insights. It showed that the main source of allocations does not come from the code written during the exercises, and that some objects are indeed being released.
+
+The most concerning observation is the continuous growth in the number of created objects. Within just one and a half minutes, the count reached as high as 69K, which could cause issues during prolonged program usage, especially on devices with limited RAM.
+
+In summary, the program does not suffer from a memory leak but rather from unintended object retention. Extending the application in a similar manner, without adhering to SRP principles and proper encapsulation, could escalate into a genuine memory leak, ultimately hindering or even preventing effective use of the program.
+
+
+
+## Event-Driven Object Manipulation - Exercise 6
 Purpose of the project is to create a `Windows Forms` application that dynamically generates all of its UI elements at runtime—without using the `Designer` and provides both mouse‐driven and game-style keyboard controls for manipulating a single black object on the form.
 
 The interface will consist of ten buttons `UP, U-P, >>>, D-P, DOWN, D-L, <<<, U-L, INCREASE, DECREASE` arranged next to the black label. Clicking any button or pressing its corresponding keyboard shortcut moves or resizes the shape accordingly. A Label on the form displays, in real time, the list of all currently held down keys `Active keys`, updating instantly as keys are pressed and released.
@@ -619,7 +654,7 @@ Thanks to constructor injection, interface abstractions, and single‑responsibi
 
 
 
-## Configurable Compression Display Tool - Exercise 6
+## Configurable Compression Display Tool - Exercise 7
 The purpose of the project is to build a program that, in the future, could be used for encoding by compression algorithms. The application consists of three panels: 
 - the `Work Panel`, which, upon clicking the `AUTO` button, will display 102 labels and read-only textboxes that will represent the output of the compression algorithm,
 - the `Parameters`, which will add a pair of labels and textboxes that (in the future) will allow the user to customize the entire `Work Panel`,
@@ -786,9 +821,3 @@ Through these four components the application follows SOLID and object-oriented 
 
 ### Output
 ![Image](https://github.com/user-attachments/assets/e5a95f99-cdcd-4e39-a83f-98c8d65b10d0)
-
-
-
-
-
-
