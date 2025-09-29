@@ -491,19 +491,25 @@ The goal of this exercise is to analyze the program created in the previous task
 
 ### Test A
 The application was tested using the diagnostic tool built into Visual Studio. Below image presents the results of the analysis.
+
 <img width="1679" height="185" alt="Image" src="https://github.com/user-attachments/assets/5515fd30-93c3-46b3-8059-a3ccd87dace9" />
+
 We can observe memory usage remaining at a relatively stable level, with slight increases that appear to normalize, as can be seen around the 60th second of the test. This result can be considered satisfactory however, I decided to perform additional measurements in order to obtain more information.
 
 
 ### Test B
 The next test provides us with more insights. In addition to memory usage, we can also observe the number of created objects as well as CPU usage.
+
 <img width="322" height="524" alt="Image" src="https://github.com/user-attachments/assets/d38249a8-b06c-4163-a42f-236729ae46e6" />
+
 In the image above, we can observe a slight increase in the number of `live objects`, which does not recur in subsequent snapshots. This suggests that the program does not suffer from continuous allocation without proper deallocation. The program maintains a stable number of objects and a consistent heap size. Minor fluctuations, such as +5 objects or +0.15KB, appear to be normal behavior and do not directly indicate a memory issue.
 
 
 ### Test C
 The final test was conducted with the use of `.NET Object Allocation Tracking` in order to monitor object creation and allocation patterns.
+
 <img width="1680" height="736" alt="Image" src="https://github.com/user-attachments/assets/558cc53e-cf93-49db-a060-64b2ace046a9" />
+
 The interpretation of the charts should begin with the most critical metric `Live Objects`. A systematic increase in the number of objects can be observed, which occurs after each object movement. The observable decreases coincide with object release events. This pattern indicates continuous allocation activity, but without evidence of a permanent memory leak.
 
 The `Object Delta` metric illustrates changes in the object count over time. The presence of negative bars shows that objects are being collected by the `Garbage Collector` as expected, preventing memory leaks.
